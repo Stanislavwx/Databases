@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16
+    container_name: lab9-postgres
+    environment:
+      POSTGRES_DB: lab9db
+      POSTGRES_USER: labuser
+      POSTGRES_PASSWORD: labpass
+    ports:
+      - "5433:5432"   # зовнішній порт 5433 -> внутрішній 5432
+    volumes:
+      - lab9-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  lab9-data:
